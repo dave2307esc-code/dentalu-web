@@ -11,8 +11,8 @@
 
 <style>
 :root{
-  --p1:#6f2dbd;     /* morado */
-  --p2:#ff2aa6;     /* rosa */
+  --p1:#6f2dbd;
+  --p2:#ff2aa6;
   --bg:#f7f6ff;
   --card:#ffffff;
   --text:#14131a;
@@ -21,8 +21,6 @@
   --shadow: 0 18px 55px rgba(20,19,26,.12);
   --shadow2: 0 10px 30px rgba(20,19,26,.10);
   --r:22px;
-
-  /* se ajusta por JS al alto real del header */
   --navH: 92px;
 }
 
@@ -85,15 +83,8 @@ a{color:inherit;text-decoration:none}
   font-weight:800;
   line-height:1.2;
 }
-.brandText .who .label{
-  white-space:nowrap;
-  flex:0 0 auto;
-}
-.brandText .who .name{
-  color:var(--text);
-  font-weight:900;
-  overflow-wrap:anywhere;
-}
+.brandText .who .label{white-space:nowrap; flex:0 0 auto;}
+.brandText .who .name{color:var(--text); font-weight:900; overflow-wrap:anywhere;}
 .brandText .meta{
   display:block;
   margin-top:6px;
@@ -134,9 +125,34 @@ a{color:inherit;text-decoration:none}
 .btn:hover{transform: translateY(-2px); box-shadow: 0 20px 55px rgba(111,45,189,.22)}
 .btn:active{transform: translateY(0); opacity:.92}
 
-/* ===== HERO ===== */
-.hero{
+/* ===== NUEVO: LOGO FUERA DEL CUADRO ===== */
+.heroTopBrand{
   margin-top:18px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
+.heroTopBrand img{
+  width:140px;
+  height:140px;
+  border-radius:34px;
+  object-fit:cover;
+  background:#fff;
+  padding:10px;
+  border:1px solid var(--line);
+  box-shadow: 0 18px 55px rgba(20,19,26,.14);
+}
+.heroTopBrand .tagline{
+  margin-top:10px;
+  font-weight:900;
+  font-size:16px;
+  color: var(--p1);
+}
+
+/* ===== HERO (CUADRO DE AGENDA) ===== */
+.hero{
+  margin-top:16px;
   border-radius: 28px;
   padding: 28px 18px;
   background: #ffffff;
@@ -149,39 +165,11 @@ a{color:inherit;text-decoration:none}
   gap: 18px;
   align-items:center;
 }
-
-/* NUEVO: marca centrada (logo + frase) arriba del título */
-.heroBrand{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  text-align:center;
-  margin-bottom:14px;
-}
-.heroBrand .heroLogo{
-  width:118px;
-  height:118px;
-  border-radius:30px;
-  background:#fff;
-  padding:10px;
-  border:1px solid var(--line);
-  box-shadow: 0 16px 40px rgba(20,19,26,.12);
-  object-fit:cover;
-}
-.heroBrand .tagline{
-  margin-top:10px;
-  font-weight:900;
-  font-size:15px;
-  color: var(--p1);
-  letter-spacing:.2px;
-}
-
 .hTitle{
   margin:0 0 10px 0;
   font-size:44px;
   font-weight:900;
   line-height:1.05;
-  text-align:center; /* porque ahora va centrado con la marca */
 }
 .hSub{
   margin:0 0 16px 0;
@@ -189,16 +177,8 @@ a{color:inherit;text-decoration:none}
   font-weight:700;
   color: var(--muted);
   max-width: 60ch;
-  text-align:center; /* centrado */
-  margin-left:auto;
-  margin-right:auto;
 }
-.ctaRow{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  justify-content:center; /* centrado */
-}
+.ctaRow{display:flex; gap:10px; flex-wrap:wrap;}
 .ctaPrimary{
   border:0; cursor:pointer;
   padding:14px 16px;
@@ -225,13 +205,7 @@ a{color:inherit;text-decoration:none}
 }
 
 /* badges */
-.badges{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  justify-content:center; /* centrado */
-  margin-top:12px
-}
+.badges{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px}
 .badge{
   padding:8px 10px;
   border-radius:999px;
@@ -343,8 +317,6 @@ textarea{min-height:120px; resize:vertical}
   box-shadow: 0 18px 55px rgba(111,45,189,.18);
   transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
 }
-.send:hover{transform: translateY(-2px); box-shadow: 0 22px 70px rgba(111,45,189,.22)}
-.send:active{transform: translateY(0); opacity:.92}
 .small{margin:10px 0 0; color:var(--muted); font-weight:700; font-size:13px; line-height:1.45}
 .kv{display:grid; gap:10px}
 .kvItem{
@@ -407,7 +379,6 @@ textarea{min-height:120px; resize:vertical}
   .brand img{width:60px;height:60px}
   .hTitle{font-size:34px}
 
-  /* menú como fila deslizable */
   .menu{
     justify-content:flex-start;
     overflow:auto;
@@ -418,20 +389,15 @@ textarea{min-height:120px; resize:vertical}
   .menu::-webkit-scrollbar{display:none}
   .menu a{white-space:nowrap}
 
-  /* logo del hero un poco más chico en celular */
-  .heroBrand .heroLogo{
-    width:104px; height:104px;
-    border-radius:28px;
+  .heroTopBrand img{
+    width:120px;height:120px;
+    border-radius:30px;
   }
 }
 
-/* ===== CELULAR CHICO: header limpio ===== */
+/* ===== CELULAR CHICO ===== */
 @media (max-width: 520px){
-  .topBar{
-    flex-direction:column;
-    align-items:stretch;
-    gap:10px;
-  }
+  .topBar{flex-direction:column; align-items:stretch; gap:10px;}
   .brand{width:100%; align-items:flex-start}
   .brandText b{font-size:16px}
   .brandText .who{font-size:12.5px}
@@ -453,7 +419,6 @@ const WA_NUMBER = "527121300626";
 const WA_BASE = `https://wa.me/${WA_NUMBER}`;
 const WA_TEXT_DEFAULT = "Hola DENTALU, quiero agendar una cita.";
 
-/* Ajusta --navH al alto real del header (cel vs compu) */
 function setNavHeight(){
   const top = document.querySelector('.top');
   if(!top) return;
@@ -461,7 +426,6 @@ function setNavHeight(){
   document.documentElement.style.setProperty('--navH', `${h}px`);
 }
 
-/* Scroll EXACTO al título (no se queda a medias) */
 function scrollToTitle(id){
   const section = document.querySelector(id);
   if(!section) return;
@@ -503,16 +467,16 @@ function scrollToTitle(id){
 
 <main class="wrap">
 
-  <!-- HERO -->
+  <!-- LOGO FUERA DEL CUADRO -->
+  <div class="heroTopBrand">
+    <img src="logo.png" alt="DENTALU">
+    <div class="tagline">Tu sonrisa, nuestra dedicación.</div>
+  </div>
+
+  <!-- CUADRO DE AGENDA -->
   <section class="hero" id="inicio">
     <div class="heroInner">
       <div>
-        <!-- NUEVO: logo centrado + frase arriba del título -->
-        <div class="heroBrand">
-          <img class="heroLogo" src="logo.png" alt="DENTALU">
-          <div class="tagline">Tu sonrisa, nuestra dedicación.</div>
-        </div>
-
         <h1 class="hTitle">Agenda tu cita hoy</h1>
         <p class="hSub">Un toque y listo: WhatsApp o llamada. Atención clara, amable y profesional.</p>
 
@@ -687,7 +651,6 @@ function scrollToTitle(id){
   </div>
 </main>
 
-<!-- Bottom bar -->
 <div class="bottomBar">
   <div class="bar">
     <a id="waBottom" class="action primary" href="#" target="_blank" rel="noopener">💬 WhatsApp</a>
@@ -709,7 +672,6 @@ function setLinks(){
   document.getElementById("mapsBottom").href = MAP_URL;
 }
 
-/* Menú: ir EXACTO al título */
 document.querySelectorAll('.menu a').forEach(link=>{
   link.addEventListener('click', (e)=>{
     e.preventDefault();
@@ -719,14 +681,12 @@ document.querySelectorAll('.menu a').forEach(link=>{
   });
 });
 
-/* Botón "Enviar mensaje" del hero exacto */
 document.getElementById('goContact').addEventListener('click', (e)=>{
   e.preventDefault();
   scrollToTitle('#contacto');
   history.pushState(null, "", '#contacto');
 });
 
-/* Al abrir con hash, también posiciona perfecto */
 function handleHashOnLoad(){
   const hash = window.location.hash;
   if(hash && document.querySelector(hash)){
@@ -737,7 +697,6 @@ function handleHashOnLoad(){
 window.addEventListener('resize', ()=>setNavHeight());
 window.addEventListener('orientationchange', ()=>setTimeout(setNavHeight, 150));
 
-/* Init */
 setLinks();
 setNavHeight();
 handleHashOnLoad();
