@@ -11,10 +11,9 @@
 
 <style>
 :root{
-  /* Colores base (no mezclados como fondo) */
-  --p1:#6f2dbd;       /* morado */
-  --p2:#ff2aa6;       /* rosa */
-  --bg:#f7f6ff;       /* como antes */
+  --p1:#6f2dbd;     /* morado */
+  --p2:#ff2aa6;     /* rosa */
+  --bg:#f7f6ff;
   --card:#ffffff;
   --text:#14131a;
   --muted:#66627a;
@@ -22,6 +21,9 @@
   --shadow: 0 18px 55px rgba(20,19,26,.12);
   --shadow2: 0 10px 30px rgba(20,19,26,.10);
   --r:22px;
+
+  /* Se ajusta por JS al alto real del header (para scroll perfecto) */
+  --navH: 92px;
 }
 
 *{box-sizing:border-box}
@@ -42,7 +44,7 @@ a{color:inherit;text-decoration:none}
 /* ===== TOP NAV ===== */
 .top{
   position:sticky; top:0; z-index:30;
-  background: rgba(247,246,255,.85);
+  background: rgba(247,246,255,.90);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--line);
 }
@@ -78,7 +80,7 @@ a{color:inherit;text-decoration:none}
   line-height:1.25;
 }
 
-/* Botones del menú */
+/* Menú */
 .menu{
   display:flex; gap:10px; flex-wrap:wrap; justify-content:center;
 }
@@ -93,9 +95,7 @@ a{color:inherit;text-decoration:none}
 .menu a:hover{background:#ebe9ff}
 
 /* Acciones */
-.actions{
-  display:flex; gap:10px; align-items:center;
-}
+.actions{display:flex; gap:10px; align-items:center}
 .pill{
   display:flex; align-items:center; justify-content:center; gap:8px;
   padding:10px 12px;
@@ -113,7 +113,7 @@ a{color:inherit;text-decoration:none}
   font-weight:900;
   font-size:14px;
   color:#fff;
-  background: var(--p1); /* base morado */
+  background: var(--p1);
   box-shadow: 0 16px 40px rgba(111,45,189,.18);
   transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
   white-space:nowrap;
@@ -149,9 +149,7 @@ a{color:inherit;text-decoration:none}
   color: var(--muted);
   max-width: 60ch;
 }
-.ctaRow{
-  display:flex; gap:10px; flex-wrap:wrap;
-}
+.ctaRow{display:flex; gap:10px; flex-wrap:wrap}
 .ctaPrimary{
   border:0; cursor:pointer;
   padding:14px 16px;
@@ -159,7 +157,7 @@ a{color:inherit;text-decoration:none}
   font-weight:900;
   font-size:16px;
   color:#fff;
-  background: var(--p2); /* base rosa */
+  background: var(--p2);
   box-shadow: 0 18px 55px rgba(255,42,166,.20);
   transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
   min-width: 240px;
@@ -194,11 +192,7 @@ a{color:inherit;text-decoration:none}
   border: 1px solid var(--line);
   padding: 14px;
 }
-.heroCard h3{
-  margin:0 0 10px 0;
-  font-size:14px;
-  font-weight:900;
-}
+.heroCard h3{margin:0 0 10px 0; font-size:14px; font-weight:900}
 .infoLine{
   display:flex; gap:10px; align-items:flex-start;
   padding:10px 10px;
@@ -211,20 +205,14 @@ a{color:inherit;text-decoration:none}
 .infoLine span{display:block; color:var(--muted); font-weight:700; font-size:13px; margin-top:4px; line-height:1.25}
 
 /* ===== SECTIONS ===== */
+/* Esto ayuda a que al llegar con anclas (#servicios) el título NO quede tapado por el header */
 .section{
-  padding-top: 18px;
+  padding-top: calc(var(--navH) + 12px);
   margin-top: 18px;
+  scroll-margin-top: calc(var(--navH) + 12px);
 }
-.section h2{
-  margin:0 0 8px 0;
-  font-size:34px;
-  font-weight:900;
-}
-.section .sub{
-  margin:0 0 14px 0;
-  color: var(--muted);
-  font-weight:700;
-}
+.section h2{margin:0 0 8px 0; font-size:34px; font-weight:900}
+.section .sub{margin:0 0 14px 0; color: var(--muted); font-weight:700}
 
 /* Services grid */
 .grid{
@@ -255,18 +243,8 @@ a{color:inherit;text-decoration:none}
   box-shadow: 0 12px 30px rgba(20,19,26,.08);
 }
 .cardBody{padding:14px}
-.cardBody h3{
-  margin:0 0 8px 0;
-  font-size:18px;
-  font-weight:900;
-}
-.cardBody p{
-  margin:0;
-  color: var(--muted);
-  font-weight:700;
-  font-size:14px;
-  line-height:1.45;
-}
+.cardBody h3{margin:0 0 8px 0; font-size:18px; font-weight:900}
+.cardBody p{margin:0; color: var(--muted); font-weight:700; font-size:14px; line-height:1.45}
 
 /* Contact */
 .contact{
@@ -362,7 +340,7 @@ textarea{min-height:120px; resize:vertical}
   box-shadow: 0 16px 40px rgba(255,42,166,.18);
 }
 
-/* Responsive */
+/* ===== COMPATIBILIDAD CELULAR ===== */
 @media (max-width: 980px){
   .heroInner{grid-template-columns:1fr}
   .grid{grid-template-columns:1fr}
@@ -371,7 +349,21 @@ textarea{min-height:120px; resize:vertical}
   .brand{min-width:auto}
   .brand img{width:64px;height:64px}
   .hTitle{font-size:34px}
+  .wrap{padding:14px}
+  .topBar{padding:10px 14px}
+
+  /* Menú tipo “fila deslizable” para que quepa en celular */
+  .menu{
+    justify-content:flex-start;
+    overflow:auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width:none;
+  }
+  .menu::-webkit-scrollbar{display:none}
+  .menu a{white-space:nowrap}
 }
+
+/* Evita zoom raro en iPhone al tocar inputs (font-size >= 16px ya ayuda) */
 </style>
 </head>
 
@@ -384,6 +376,26 @@ const MAP_URL = "https://www.google.com/maps?q=" + encodeURIComponent(MAP_QUERY)
 const WA_NUMBER = "527121300626";
 const WA_BASE = `https://wa.me/${WA_NUMBER}`;
 const WA_TEXT_DEFAULT = "Hola DENTALU, quiero agendar una cita.";
+
+/* Ajusta la variable --navH al alto REAL del header (diferente en celular vs compu) */
+function setNavHeight(){
+  const top = document.querySelector('.top');
+  if(!top) return;
+  const h = Math.round(top.getBoundingClientRect().height);
+  document.documentElement.style.setProperty('--navH', `${h}px`);
+}
+
+/* Scroll que deja el TÍTULO exactamente visible (no a medias) */
+function scrollToTitle(id){
+  const section = document.querySelector(id);
+  if(!section) return;
+
+  const title = section.querySelector('h2') || section;
+  const navH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--navH')) || 92;
+  const y = title.getBoundingClientRect().top + window.pageYOffset - (navH + 10);
+
+  window.scrollTo({ top: y, behavior: "smooth" });
+}
 </script>
 
 <!-- TOP NAV -->
@@ -430,8 +442,7 @@ const WA_TEXT_DEFAULT = "Hola DENTALU, quiero agendar una cita.";
           <a href="#contacto"><button class="ctaGhost">Enviar mensaje</button></a>
         </div>
 
-        <!-- ICONOS EN UNA SOLA LÍNEA (HORIZONTAL) -->
-        <div class="badges" aria-label="Beneficios">
+        <div class="badges">
           <span class="badge">✅ Atención personalizada</span>
           <span class="badge">✅ Explicación simple</span>
           <span class="badge">✅ 11:00 am – 7:00 pm</span>
@@ -616,23 +627,43 @@ function setLinks(){
   document.getElementById("mapsBottom").href = MAP_URL;
 }
 
-/* Scroll EXACTO al centro de la pantalla al dar click en el menú */
-function scrollToCenter(target){
-  const el = document.querySelector(target);
-  if(!el) return;
-  const y = el.getBoundingClientRect().top + window.pageYOffset;
-  const offset = (window.innerHeight / 2) - (el.offsetHeight / 2);
-  window.scrollTo({ top: y - offset, behavior: "smooth" });
-}
-
+/* Menú: ir EXACTO al título (en celular y compu) */
 document.querySelectorAll('.menu a').forEach(link=>{
   link.addEventListener('click', (e)=>{
     e.preventDefault();
     const target = link.getAttribute('href');
-    scrollToCenter(target);
+    scrollToTitle(target);
     history.pushState(null, "", target);
   });
 });
+
+/* Botón "Enviar mensaje" del hero: también exacto */
+document.querySelectorAll('a[href="#contacto"]').forEach(a=>{
+  a.addEventListener('click', (e)=>{
+    // Solo intercepta los que son botones internos (no teléfono)
+    if(a.getAttribute('href') === '#contacto'){
+      e.preventDefault();
+      scrollToTitle('#contacto');
+      history.pushState(null, "", '#contacto');
+    }
+  });
+});
+
+/* Al abrir con hash (ej. /#servicios), también posiciona perfecto */
+function handleHashOnLoad(){
+  const hash = window.location.hash;
+  if(hash && document.querySelector(hash)){
+    setTimeout(()=>scrollToTitle(hash), 50);
+  }
+}
+
+window.addEventListener('resize', ()=>setNavHeight());
+window.addEventListener('orientationchange', ()=>setTimeout(setNavHeight, 120));
+
+/* Init */
+setLinks();
+setNavHeight();
+handleHashOnLoad();
 
 function sendToWhatsApp(){
   const name = document.getElementById('name').value.trim();
@@ -649,8 +680,6 @@ function sendToWhatsApp(){
 
   window.open(`${WA_BASE}?text=${text}`, '_blank');
 }
-
-setLinks();
 </script>
 
 </body>
