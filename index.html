@@ -30,11 +30,11 @@
 
 *{box-sizing:border-box}
 
-/* Fondo fijo detrás de todo (ayuda iOS) */
 html{
   background: var(--bg);
   background-color: var(--bg);
 }
+
 body{
   margin:0;
   font-family:"Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -54,7 +54,6 @@ body::before{
     var(--bg);
 }
 
-/* Links / contenedor */
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1100px;margin:0 auto;padding:18px}
 
@@ -64,8 +63,6 @@ a{color:inherit;text-decoration:none}
   background: rgba(247,246,255,.95);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--line);
-
-  /* que el header “pinte” hasta el notch dentro del viewport */
   padding-top: env(safe-area-inset-top);
 }
 .topBar{
@@ -433,31 +430,6 @@ textarea{min-height:120px; resize:vertical}
 
 <body>
 
-<script>
-const MAP_QUERY = "DENTALU Consultorio Dental, Porfirio Alcántara, 50450 Atlacomulco de Fabela, Méx.";
-const MAP_URL = "https://www.google.com/maps?q=" + encodeURIComponent(MAP_QUERY);
-
-const WA_NUMBER = "527121300626";
-const WA_BASE = `https://wa.me/${WA_NUMBER}`;
-const WA_TEXT_DEFAULT = "Hola DENTALU, quiero agendar una cita.";
-
-function setNavHeight(){
-  const top = document.querySelector('.top');
-  if(!top) return;
-  const h = Math.round(top.getBoundingClientRect().height);
-  document.documentElement.style.setProperty('--navH', `${h}px`);
-}
-
-function scrollToTitle(id){
-  const section = document.querySelector(id);
-  if(!section) return;
-  const title = section.querySelector('h2') || section;
-  const navH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--navH')) || 92;
-  const y = title.getBoundingClientRect().top + window.pageYOffset - (navH + 10);
-  window.scrollTo({ top: y, behavior: "smooth" });
-}
-</script>
-
 <!-- TOP NAV -->
 <div class="top">
   <div class="topBar wrap">
@@ -479,8 +451,10 @@ function scrollToTitle(id){
       <a href="#contacto">Contacto</a>
     </div>
 
+    <!-- LINK DIRECTO (YA NO DEPENDE DE JS) -->
     <div class="actions">
-      <a id="waTop" href="#" target="_blank" rel="noopener">
+      <a href="https://wa.me/527121300626?text=Hola%20DENTALU%2C%20quiero%20agendar%20una%20cita."
+         target="_blank" rel="noopener">
         <button class="btn">Agendar</button>
       </a>
     </div>
@@ -503,10 +477,14 @@ function scrollToTitle(id){
         <p class="hSub">Un toque y listo: WhatsApp o llamada. Atención clara, amable y profesional.</p>
 
         <div class="ctaRow">
-          <a id="waHero" href="#" target="_blank" rel="noopener">
+          <!-- LINK DIRECTO -->
+          <a href="https://wa.me/527121300626?text=Hola%20DENTALU%2C%20quiero%20agendar%20una%20cita."
+             target="_blank" rel="noopener">
             <button class="ctaPrimary">Agendar por WhatsApp</button>
           </a>
+
           <a href="tel:+527121300626"><button class="ctaGhost">Llamar</button></a>
+
           <a href="#contacto" id="goContact"><button class="ctaGhost">Enviar mensaje</button></a>
         </div>
 
@@ -597,7 +575,9 @@ function scrollToTitle(id){
       </div>
 
       <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
-        <a id="mapsBtn" href="#" target="_blank" rel="noopener">
+        <!-- LINK DIRECTO MAPS -->
+        <a href="https://www.google.com/maps?q=DENTALU%20Consultorio%20Dental%2C%20Porfirio%20Alc%C3%A1ntara%2C%2050450%20Atlacomulco%20de%20Fabela%2C%20M%C3%A9x."
+           target="_blank" rel="noopener">
           <button class="ctaPrimary" style="min-width:220px">Cómo llegar</button>
         </a>
         <a href="tel:+527121300626">
@@ -657,10 +637,15 @@ function scrollToTitle(id){
         </div>
 
         <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
-          <a id="waSide" href="#" target="_blank" rel="noopener" style="flex:1">
+          <!-- LINK DIRECTO -->
+          <a href="https://wa.me/527121300626?text=Hola%20DENTALU%2C%20quiero%20agendar%20una%20cita."
+             target="_blank" rel="noopener" style="flex:1">
             <button class="ctaPrimary" style="width:100%">Agendar ahora</button>
           </a>
-          <a id="mapsSide" href="#" target="_blank" rel="noopener" style="flex:1">
+
+          <!-- LINK DIRECTO MAPS -->
+          <a href="https://www.google.com/maps?q=DENTALU%20Consultorio%20Dental%2C%20Porfirio%20Alc%C3%A1ntara%2C%2050450%20Atlacomulco%20de%20Fabela%2C%20M%C3%A9x."
+             target="_blank" rel="noopener" style="flex:1">
             <button class="ctaGhost" style="width:100%">Abrir en Maps</button>
           </a>
         </div>
@@ -673,22 +658,23 @@ function scrollToTitle(id){
   </div>
 </main>
 
+<!-- Bottom bar -->
 <div class="bottomBar">
   <div class="bar">
-    <a id="waBottom" class="action primary" href="#" target="_blank" rel="noopener">💬 WhatsApp</a>
+    <a class="action primary"
+       href="https://wa.me/527121300626?text=Hola%20DENTALU%2C%20quiero%20agendar%20una%20cita."
+       target="_blank" rel="noopener">💬 WhatsApp</a>
+
     <a class="action" href="tel:+527121300626">📞 Llamar</a>
-    <a id="mapsBottom" class="action" href="#" target="_blank" rel="noopener">📍 Llegar</a>
+
+    <a class="action"
+       href="https://www.google.com/maps?q=DENTALU%20Consultorio%20Dental%2C%20Porfirio%20Alc%C3%A1ntara%2C%2050450%20Atlacomulco%20de%20Fabela%2C%20M%C3%A9x."
+       target="_blank" rel="noopener">📍 Llegar</a>
   </div>
 </div>
 
 <script>
-const MAP_QUERY = "DENTALU Consultorio Dental, Porfirio Alcántara, 50450 Atlacomulco de Fabela, Méx.";
-const MAP_URL = "https://www.google.com/maps?q=" + encodeURIComponent(MAP_QUERY);
-
-const WA_NUMBER = "527121300626";
-const WA_BASE = `https://wa.me/${WA_NUMBER}`;
-const WA_TEXT_DEFAULT = "Hola DENTALU, quiero agendar una cita.";
-
+/* Ajusta --navH al alto real del header */
 function setNavHeight(){
   const top = document.querySelector('.top');
   if(!top) return;
@@ -696,6 +682,7 @@ function setNavHeight(){
   document.documentElement.style.setProperty('--navH', `${h}px`);
 }
 
+/* Scroll EXACTO al título */
 function scrollToTitle(id){
   const section = document.querySelector(id);
   if(!section) return;
@@ -705,18 +692,7 @@ function scrollToTitle(id){
   window.scrollTo({ top: y, behavior: "smooth" });
 }
 
-function setLinks(){
-  const waLink = `${WA_BASE}?text=${encodeURIComponent(WA_TEXT_DEFAULT)}`;
-  document.getElementById("waTop").href = waLink;
-  document.getElementById("waHero").href = waLink;
-  document.getElementById("waSide").href = waLink;
-  document.getElementById("waBottom").href = waLink;
-
-  document.getElementById("mapsBtn").href = MAP_URL;
-  document.getElementById("mapsSide").href = MAP_URL;
-  document.getElementById("mapsBottom").href = MAP_URL;
-}
-
+/* Menú: scroll exacto */
 document.querySelectorAll('.menu a').forEach(link=>{
   link.addEventListener('click', (e)=>{
     e.preventDefault();
@@ -726,12 +702,17 @@ document.querySelectorAll('.menu a').forEach(link=>{
   });
 });
 
-document.getElementById('goContact').addEventListener('click', (e)=>{
-  e.preventDefault();
-  scrollToTitle('#contacto');
-  history.pushState(null, "", '#contacto');
-});
+/* Botón Enviar mensaje del hero */
+const goContact = document.getElementById('goContact');
+if(goContact){
+  goContact.addEventListener('click', (e)=>{
+    e.preventDefault();
+    scrollToTitle('#contacto');
+    history.pushState(null, "", '#contacto');
+  });
+}
 
+/* Al abrir con hash */
 function handleHashOnLoad(){
   const hash = window.location.hash;
   if(hash && document.querySelector(hash)){
@@ -739,27 +720,28 @@ function handleHashOnLoad(){
   }
 }
 
-window.addEventListener('resize', ()=>setNavHeight());
+window.addEventListener('resize', setNavHeight);
 window.addEventListener('orientationchange', ()=>setTimeout(setNavHeight, 150));
 
-setLinks();
 setNavHeight();
 handleHashOnLoad();
 
+/* Enviar formulario a WhatsApp (aquí sí usamos window.open) */
 function sendToWhatsApp(){
   const name = document.getElementById('name').value.trim();
   const phone = document.getElementById('phone').value.trim();
   const need = document.getElementById('need').value;
   const msg  = document.getElementById('msg').value.trim();
 
+  const base = "https://wa.me/527121300626";
   const text =
-    `Hola DENTALU, quiero agendar una cita.%0A` +
-    `Nombre: ${encodeURIComponent(name || 'No indicado')}%0A` +
-    `Tel: ${encodeURIComponent(phone || 'No indicado')}%0A` +
-    `Servicio: ${encodeURIComponent(need)}%0A` +
-    `Mensaje: ${encodeURIComponent(msg || 'Sin mensaje')}`;
+    `Hola DENTALU, quiero agendar una cita.\n` +
+    `Nombre: ${name || 'No indicado'}\n` +
+    `Tel: ${phone || 'No indicado'}\n` +
+    `Servicio: ${need}\n` +
+    `Mensaje: ${msg || 'Sin mensaje'}`;
 
-  window.open(`${WA_BASE}?text=${text}`, '_blank');
+  window.open(`${base}?text=${encodeURIComponent(text)}`, '_blank');
 }
 </script>
 
