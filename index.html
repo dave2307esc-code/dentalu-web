@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dentalu Clínica Dental | Atlacomulco</title>
+<title>DENTALU Consultorio Dental | Atlacomulco</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
@@ -166,7 +166,7 @@ transition:.2s;
 }
 .call:hover{transform:translateY(-2px)}
 
-/* SERVICES */
+/* SECTIONS */
 .section{
 margin-top:50px;
 }
@@ -182,6 +182,7 @@ margin-top:0;
 margin-bottom:15px;
 }
 
+/* SERVICES */
 .services{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -216,8 +217,25 @@ margin-bottom:15px;
 color:var(--muted);
 font-size:14px;
 margin:0;
-line-height:1.35;
+line-height:1.5;
 }
+
+/* ABOUT */
+.aboutGrid{
+display:grid;
+grid-template-columns:1.1fr .9fr;
+gap:20px;
+margin-top:18px;
+}
+.aboutQuote{
+background:linear-gradient(135deg,rgba(111,45,189,.12),rgba(255,42,166,.12));
+border-radius:25px;
+padding:22px;
+border:1px solid var(--line);
+}
+.aboutQuote b{display:block;font-size:16px;margin-bottom:8px}
+.aboutQuote p{margin:0;color:var(--muted);line-height:1.6}
+@media(max-width:900px){.aboutGrid{grid-template-columns:1fr}}
 
 /* CONTACT */
 .contact{
@@ -269,7 +287,7 @@ transition:.2s;
 color:var(--muted);
 font-size:13px;
 margin-top:10px;
-line-height:1.35;
+line-height:1.6;
 }
 
 /* FOOTER */
@@ -319,23 +337,30 @@ color:white;
 
 <body>
 
+<!-- Variables de texto para Maps (para que no se te vuelva a desconfigurar) -->
+<script>
+const MAP_QUERY = "DENTALU Consultorio Dental, Porfirio Alcántara, 50450 Atlacomulco de Fabela, Méx.";
+const MAP_URL = "https://www.google.com/maps?q=" + encodeURIComponent(MAP_QUERY);
+</script>
+
 <div class="header">
   <div class="logoBox">
-    <img src="logo.png" alt="Dentalu Clínica Dental">
+    <img src="logo.png" alt="DENTALU Consultorio Dental">
     <div class="logoText">
-      <b>Dentalu Clínica Dental</b>
+      <b>DENTALU Consultorio Dental</b>
       <span>Atiende: <b>Lourdes Alejandra Hernández García</b></span>
       <span>Atlacomulco • Agenda fácil</span>
     </div>
   </div>
 
   <div class="menu">
+    <a href="#quienes">Quiénes somos</a>
     <a href="#servicios">Servicios</a>
     <a href="#ubicacion">Ubicación</a>
     <a href="#contacto">Contacto</a>
   </div>
 
-  <a href="https://wa.me/527121300626?text=Hola%20Dentalu%2C%20quiero%20agendar%20una%20cita." target="_blank">
+  <a href="https://wa.me/527121300626?text=Hola%20DENTALU%2C%20quiero%20agendar%20una%20cita." target="_blank">
     <button class="btnHeader">Agendar</button>
   </a>
 </div>
@@ -344,10 +369,10 @@ color:white;
 
   <div class="hero">
     <h1>Agenda tu cita hoy</h1>
-    <p>Un solo toque y listo: WhatsApp o llamada. Te atendemos con claridad y confianza.</p>
+    <p>Un toque y listo: WhatsApp o llamada. Atención clara, amable y a precio accesible.</p>
 
     <div class="heroButtons">
-      <a href="https://wa.me/527121300626?text=Hola%20Dentalu%2C%20quiero%20agendar%20una%20cita." target="_blank">
+      <a href="https://wa.me/527121300626?text=Hola%20DENTALU%2C%20quiero%20agendar%20una%20cita." target="_blank">
         <button class="whatsapp">Agendar por WhatsApp</button>
       </a>
       <a href="tel:+527121300626">
@@ -356,6 +381,37 @@ color:white;
     </div>
   </div>
 
+  <!-- QUIENES SOMOS -->
+  <div class="section" id="quienes">
+    <h2>Quiénes somos</h2>
+    <p class="sub">Atención personalizada, trato humano y precios accesibles.</p>
+
+    <div class="aboutGrid">
+      <div class="card">
+        <h3 style="margin-top:0">DENTALU Consultorio Dental</h3>
+        <p>
+          En DENTALU nos enfocamos en brindar una <b>atención personalizada</b> y cercana, con un trato claro y amable en cada consulta.
+          Nuestro objetivo es que te sientas en confianza desde el primer momento y que tengas un plan sencillo para cuidar tu salud bucal.
+        </p>
+        <p style="margin-top:12px">
+          También somos una opción ideal para quienes buscan <b>precios accesibles</b> sin dejar de lado la calidad, el cuidado y la
+          satisfacción del paciente.
+        </p>
+      </div>
+
+      <div class="aboutQuote">
+        <b>Lo que más valoran nuestros pacientes</b>
+        <p>
+          “La atención fue excepcional, me sentí en buenas manos desde el primer momento”.
+        </p>
+        <p style="margin-top:12px">
+          Con un compromiso firme hacia el bienestar de cada persona, buscamos que tu experiencia sea cómoda, confiable y sin complicaciones.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICIOS -->
   <div class="section" id="servicios">
     <h2>Servicios</h2>
     <p class="sub">Sencillo y claro. Si tienes duda, escríbenos.</p>
@@ -381,16 +437,18 @@ color:white;
     </div>
   </div>
 
+  <!-- UBICACION -->
   <div class="section" id="ubicacion">
     <h2>Ubicación</h2>
-    <p class="sub">Porfirio Alcántara, 50450 Atlacomulco de Fabela, Méx.</p>
+    <p class="sub"><b>DENTALU Consultorio Dental</b>, Porfirio Alcántara, 50450 Atlacomulco de Fabela, Méx.</p>
     <p class="sub"><b>Horario:</b> Lunes a Viernes de 11:00 am a 7:00 pm</p>
 
-    <a href="https://www.google.com/maps?q=Porfirio%20Alc%C3%A1ntara%2C%2050450%20Atlacomulco%20de%20Fabela%2C%20M%C3%A9x." target="_blank">
+    <a id="mapsBtn" target="_blank">
       <button class="btnHeader">Cómo llegar</button>
     </a>
   </div>
 
+  <!-- CONTACTO -->
   <div class="section" id="contacto">
     <h2>Contacto rápido</h2>
     <p class="sub">Llena esto y se manda directo a WhatsApp.</p>
@@ -422,30 +480,42 @@ color:white;
       <div class="infoCard">
         <h3 style="margin:0 0 10px 0">Datos</h3>
         <p class="small"><b>Teléfono:</b> +52 712 130 0626</p>
-        <p class="small"><b>Dirección:</b> Porfirio Alcántara, 50450 Atlacomulco de Fabela, Méx.</p>
+        <p class="small"><b>Ubicación:</b> DENTALU Consultorio Dental, Porfirio Alcántara, 50450 Atlacomulco de Fabela, Méx.</p>
         <p class="small"><b>Atiende:</b> Lourdes Alejandra Hernández García</p>
         <p class="small"><b>Horario:</b> Lunes a Viernes de 11:00 am a 7:00 pm</p>
 
-        <a href="https://wa.me/527121300626?text=Hola%20Dentalu%2C%20quiero%20agendar%20una%20cita." target="_blank">
+        <a href="https://wa.me/527121300626?text=Hola%20DENTALU%2C%20quiero%20agendar%20una%20cita." target="_blank">
           <button class="btnHeader" style="width:100%">Agendar ahora</button>
+        </a>
+
+        <a id="mapsBtn2" target="_blank" style="display:block;margin-top:10px">
+          <button class="btnHeader" style="width:100%">Abrir en Maps</button>
         </a>
       </div>
     </div>
   </div>
 
   <div class="footer">
-    Dentalu Clínica Dental © 2026
+    DENTALU Consultorio Dental © 2026
   </div>
 
 </div>
 
 <div class="bottomBar">
-  <a class="main" href="https://wa.me/527121300626?text=Hola%20Dentalu%2C%20quiero%20agendar%20una%20cita." target="_blank">WhatsApp</a>
+  <a class="main" href="https://wa.me/527121300626?text=Hola%20DENTALU%2C%20quiero%20agendar%20una%20cita." target="_blank">WhatsApp</a>
   <a href="tel:+527121300626">Llamar</a>
-  <a href="https://www.google.com/maps?q=Porfirio%20Alc%C3%A1ntara%2C%2050450%20Atlacomulco%20de%20Fabela%2C%20M%C3%A9x." target="_blank">Llegar</a>
+  <a id="mapsBottom" target="_blank">Llegar</a>
 </div>
 
 <script>
+const MAP_QUERY = "DENTALU Consultorio Dental, Porfirio Alcántara, 50450 Atlacomulco de Fabela, Méx.";
+const MAP_URL = "https://www.google.com/maps?q=" + encodeURIComponent(MAP_QUERY);
+
+// set links
+document.getElementById("mapsBtn").href = MAP_URL;
+document.getElementById("mapsBtn2").href = MAP_URL;
+document.getElementById("mapsBottom").href = MAP_URL;
+
 function sendToWhatsApp(){
   const name = document.getElementById('name').value.trim();
   const phone = document.getElementById('phone').value.trim();
@@ -453,7 +523,7 @@ function sendToWhatsApp(){
   const msg  = document.getElementById('msg').value.trim();
 
   const text =
-    `Hola Dentalu, quiero agendar una cita.%0A` +
+    `Hola DENTALU, quiero agendar una cita.%0A` +
     `Nombre: ${encodeURIComponent(name || 'No indicado')}%0A` +
     `Tel: ${encodeURIComponent(phone || 'No indicado')}%0A` +
     `Servicio: ${encodeURIComponent(need)}%0A` +
