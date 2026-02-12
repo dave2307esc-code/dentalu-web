@@ -4,7 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <meta name="theme-color" content="#f7f6ff">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 <title>DENTALU Consultorio Dental | Atlacomulco</title>
 
@@ -24,47 +25,47 @@
   --shadow: 0 18px 55px rgba(20,19,26,.12);
   --shadow2: 0 10px 30px rgba(20,19,26,.10);
   --r:22px;
-
-  /* se ajusta por JS al alto real del header */
   --navH: 92px;
 }
 
 *{box-sizing:border-box}
 
-html, body{
-  margin:0;
-  padding:0;
+/* Fondo fijo detrás de todo (ayuda iOS) */
+html{
   background: var(--bg);
   background-color: var(--bg);
-  min-height: 100%;
 }
-
 body{
+  margin:0;
   font-family:"Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--text);
+  min-height:100svh;
+  background: transparent;
+  overscroll-behavior-y:none;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
   background:
     radial-gradient(1000px 520px at 10% 10%, rgba(111,45,189,.10), transparent 55%),
     radial-gradient(900px 520px at 90% 15%, rgba(255,42,166,.10), transparent 55%),
     var(--bg);
-  color:var(--text);
-
-  /* iPhone: altura real sin “negros” */
-  min-height: 100svh;
-
-  /* Evita “rebote” con negro */
-  overscroll-behavior-y: none;
 }
 
+/* Links / contenedor */
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1100px;margin:0 auto;padding:18px}
 
 /* ===== TOP NAV ===== */
 .top{
   position:sticky; top:0; z-index:30;
-  background: rgba(247,246,255,.90);
+  background: rgba(247,246,255,.95);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--line);
 
-  /* iPhone notch */
+  /* que el header “pinte” hasta el notch dentro del viewport */
   padding-top: env(safe-area-inset-top);
 }
 .topBar{
@@ -171,7 +172,7 @@ a{color:inherit;text-decoration:none}
   color: var(--p1);
 }
 
-/* ===== HERO (CUADRO DE AGENDA) ===== */
+/* ===== HERO ===== */
 .hero{
   margin-top:16px;
   border-radius: 28px;
@@ -366,12 +367,10 @@ textarea{min-height:120px; resize:vertical}
 /* Bottom bar */
 .bottomBar{
   position:fixed; left:0; right:0; bottom:0; z-index:50;
-  background: rgba(247,246,255,.92);
+  background: rgba(247,246,255,.95);
   backdrop-filter: blur(12px);
   border-top: 1px solid var(--line);
   padding:10px 12px;
-
-  /* iPhone: respeta safe-area abajo para que no se vea negro/ni tape */
   padding-bottom: calc(10px + env(safe-area-inset-bottom));
 }
 .bottomBar .bar{
@@ -683,6 +682,29 @@ function scrollToTitle(id){
 </div>
 
 <script>
+const MAP_QUERY = "DENTALU Consultorio Dental, Porfirio Alcántara, 50450 Atlacomulco de Fabela, Méx.";
+const MAP_URL = "https://www.google.com/maps?q=" + encodeURIComponent(MAP_QUERY);
+
+const WA_NUMBER = "527121300626";
+const WA_BASE = `https://wa.me/${WA_NUMBER}`;
+const WA_TEXT_DEFAULT = "Hola DENTALU, quiero agendar una cita.";
+
+function setNavHeight(){
+  const top = document.querySelector('.top');
+  if(!top) return;
+  const h = Math.round(top.getBoundingClientRect().height);
+  document.documentElement.style.setProperty('--navH', `${h}px`);
+}
+
+function scrollToTitle(id){
+  const section = document.querySelector(id);
+  if(!section) return;
+  const title = section.querySelector('h2') || section;
+  const navH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--navH')) || 92;
+  const y = title.getBoundingClientRect().top + window.pageYOffset - (navH + 10);
+  window.scrollTo({ top: y, behavior: "smooth" });
+}
+
 function setLinks(){
   const waLink = `${WA_BASE}?text=${encodeURIComponent(WA_TEXT_DEFAULT)}`;
   document.getElementById("waTop").href = waLink;
