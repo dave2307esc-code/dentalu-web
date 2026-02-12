@@ -1,269 +1,421 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>DENTALU Consultorio Dental | Atlacomulco</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root{
---p1:#6f2dbd;
---p2:#ff2aa6;
---bg:#f7f6ff;
---card:#ffffff;
---text:#14131a;
---muted:#66627a;
---line:rgba(20,19,26,.08);
+  --p1:#6f2dbd;         /* morado */
+  --p2:#ff2aa6;         /* rosa */
+  --bg:#0c0b12;         /* fondo premium */
+  --card:rgba(255,255,255,.06);
+  --card2:rgba(255,255,255,.10);
+  --text:#f7f7ff;
+  --muted:rgba(247,247,255,.75);
+  --line:rgba(255,255,255,.12);
+  --shadow: 0 18px 55px rgba(0,0,0,.45);
+  --shadow2: 0 10px 30px rgba(0,0,0,.35);
+  --r:22px;
 }
 
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-margin:0;
-font-family:'Inter',sans-serif;
-background:var(--bg);
-color:var(--text);
+  margin:0;
+  font-family: "Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background:
+    radial-gradient(1200px 600px at 12% 10%, rgba(111,45,189,.35), transparent 60%),
+    radial-gradient(1000px 520px at 92% 18%, rgba(255,42,166,.28), transparent 60%),
+    radial-gradient(900px 500px at 50% 95%, rgba(111,45,189,.22), transparent 65%),
+    var(--bg);
+  color:var(--text);
+  letter-spacing:.2px;
 }
 
-a{text-decoration:none;color:inherit}
-.wrap{max-width:1100px;margin:auto;padding:20px}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1100px;margin:0 auto;padding:18px}
+.hr{height:1px;background:var(--line);margin:18px 0}
 
-/* HEADER */
-.header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-background:white;
-padding:15px 25px;
-border-bottom:1px solid var(--line);
-position:sticky;
-top:0;
-z-index:20;
-gap:14px;
-flex-wrap:wrap;
+/* ===== TOP NAV ===== */
+.top{
+  position:sticky; top:0; z-index:30;
+  background: rgba(12,11,18,.72);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,.10);
 }
-
-.logoBox{
-display:flex;
-align-items:center;
-gap:15px;
+.topBar{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding: 12px 18px;
 }
-
-.logoBox img{
-width:95px;
-height:95px;
-border-radius:30px;
-background:white;
-padding:8px;
-box-shadow:0 20px 45px rgba(20,19,26,.18);
-object-fit:cover;
+.brand{
+  display:flex; align-items:center; gap:12px;
+  min-width: 260px;
 }
-
-.logoText b{
-display:block;
-font-size:20px;
+.brand img{
+  width:72px;height:72px;
+  border-radius:22px;
+  object-fit:cover;
+  background:#fff;
+  padding:6px;
+  border: 1px solid rgba(255,255,255,.20);
+  box-shadow: var(--shadow2);
 }
-
-.logoText span{
-font-size:13px;
-color:var(--muted);
-display:block;
-margin-top:4px;
+.brandText b{
+  display:block;
+  font-size:18px;
+  font-weight:800;
+  line-height:1.1;
+}
+.brandText span{
+  display:block;
+  font-size:13px;
+  font-weight:700;
+  color:var(--muted);
+  margin-top:5px;
+  line-height:1.25;
 }
 
 .menu{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
+  display:flex; gap:10px; flex-wrap:wrap; justify-content:center;
 }
-
 .menu a{
-padding:10px 15px;
-border-radius:999px;
-background:#f0efff;
-font-weight:700;
-font-size:14px;
+  font-size:14px;
+  font-weight:800;         /* letras más gruesas */
+  padding:10px 14px;
+  border-radius:999px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.10);
+}
+.menu a:hover{
+  background: rgba(255,255,255,.10);
 }
 
-.btnHeader{
-background:linear-gradient(135deg,var(--p1),var(--p2));
-color:white;
-border:none;
-padding:12px 18px;
-border-radius:14px;
-font-weight:900;
-cursor:pointer;
-box-shadow:0 15px 35px rgba(111,45,189,.25);
+.actions{
+  display:flex; gap:10px; align-items:center;
 }
+.pill{
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  padding:10px 12px;
+  border-radius:999px;
+  font-weight:800;
+  font-size:14px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  white-space:nowrap;
+}
+.btn{
+  border:0; cursor:pointer;
+  padding:12px 14px;
+  border-radius:14px;
+  font-weight:900;
+  font-size:14px;
+  color:#fff;
+  background: linear-gradient(135deg,var(--p1),var(--p2));
+  box-shadow: 0 16px 40px rgba(255,42,166,.22);
+  transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+  white-space:nowrap;
+}
+.btn:hover{transform: translateY(-2px); box-shadow: 0 20px 55px rgba(255,42,166,.28)}
+.btn:active{transform: translateY(0); opacity:.92}
 
-/* HERO */
+/* ===== HERO ===== */
 .hero{
-margin-top:25px;
-background:linear-gradient(135deg,rgba(111,45,189,.10),rgba(255,42,166,.10));
-padding:40px 30px;
-border-radius:30px;
-text-align:center;
+  margin-top:18px;
+  border-radius: 28px;
+  padding: 26px 18px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+  position:relative;
+}
+.hero::before{
+  content:"";
+  position:absolute; inset:-2px;
+  background: radial-gradient(600px 220px at 30% 20%, rgba(111,45,189,.30), transparent 60%),
+              radial-gradient(600px 220px at 70% 30%, rgba(255,42,166,.24), transparent 60%);
+  filter: blur(14px);
+  opacity:.7;
+  pointer-events:none;
+}
+.heroInner{
+  position:relative;
+  display:grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 18px;
+  align-items:center;
+}
+.hTitle{
+  margin:0 0 10px 0;
+  font-size:44px;
+  font-weight:900;       /* grueso */
+  letter-spacing:.2px;
+  line-height:1.05;
+}
+.hSub{
+  margin:0 0 16px 0;
+  font-size:16px;
+  font-weight:700;       /* más legible */
+  color: var(--muted);
+  max-width: 60ch;
+}
+.ctaRow{
+  display:flex; gap:10px; flex-wrap:wrap;
+}
+.ctaPrimary{
+  border:0; cursor:pointer;
+  padding:14px 16px;
+  border-radius:16px;
+  font-weight:900;
+  font-size:16px;
+  color:#fff;
+  background: linear-gradient(135deg,var(--p1),var(--p2));
+  box-shadow: 0 18px 55px rgba(255,42,166,.22);
+  transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+  min-width: 240px;
+}
+.ctaPrimary:hover{transform: translateY(-2px); box-shadow: 0 22px 70px rgba(255,42,166,.28)}
+.ctaGhost{
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(255,255,255,.07);
+  color: var(--text);
+  padding:14px 16px;
+  border-radius:16px;
+  font-weight:900;
+  font-size:16px;
+  cursor:pointer;
+  min-width: 170px;
+}
+.badges{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px}
+.badge{
+  padding:8px 10px;
+  border-radius:999px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.10);
+  color: var(--muted);
+  font-weight:800;
+  font-size:13px;
 }
 
-.hero h1{
-font-size:42px;
-margin-bottom:10px;
+/* Right card */
+.heroCard{
+  border-radius: 22px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  padding: 14px;
+}
+.heroCard h3{
+  margin:0 0 10px 0;
+  font-size:14px;
+  font-weight:900;
+  color: var(--text);
+}
+.infoLine{
+  display:flex; gap:10px; align-items:flex-start;
+  padding:10px 10px;
+  border-radius:16px;
+  background: rgba(0,0,0,.18);
+  border: 1px solid rgba(255,255,255,.10);
+}
+.infoLine + .infoLine{margin-top:10px}
+.infoLine b{display:block; font-weight:900}
+.infoLine span{display:block; color:var(--muted); font-weight:700; font-size:13px; margin-top:4px; line-height:1.25}
+
+/* ===== SECTIONS ===== */
+.section{padding-top: 18px; margin-top: 26px}
+.section h2{
+  margin:0 0 8px 0;
+  font-size:34px;
+  font-weight:900;   /* grueso */
+}
+.section .sub{
+  margin:0 0 14px 0;
+  color: var(--muted);
+  font-weight:700;
 }
 
-.hero p{
-color:var(--muted);
-margin-bottom:20px;
+/* Premium cards */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
 }
-
-.heroButtons{
-display:flex;
-justify-content:center;
-gap:15px;
-flex-wrap:wrap;
-}
-
-.heroButtons button{
-padding:15px 22px;
-border-radius:18px;
-border:none;
-font-weight:900;
-font-size:16px;
-cursor:pointer;
-}
-
-.whatsapp{
-background:linear-gradient(135deg,var(--p1),var(--p2));
-color:white;
-}
-
-.call{
-background:white;
-border:1px solid var(--line);
-}
-
-/* SECTION */
-.section{margin-top:50px}
-.section h2{font-size:34px;margin-bottom:8px}
-.section .sub{color:var(--muted);margin-bottom:15px}
-
-/* CARDS */
-.services{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-
 .card{
-background:var(--card);
-border-radius:25px;
-padding:25px;
-box-shadow:0 15px 35px rgba(20,19,26,.08);
+  border-radius: var(--r);
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 14px 40px rgba(0,0,0,.28);
+  overflow:hidden;
+  transition: transform .15s ease, box-shadow .15s ease;
 }
-
+.card:hover{transform: translateY(-2px); box-shadow: 0 18px 52px rgba(0,0,0,.34)}
 .cardTop{
-height:110px;
-background:linear-gradient(135deg,rgba(111,45,189,.10),rgba(255,42,166,.10));
-border-radius:20px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:40px;
-margin-bottom:15px;
+  height:140px;
+  display:flex; align-items:center; justify-content:center;
+  background: linear-gradient(135deg, rgba(111,45,189,.22), rgba(255,42,166,.14));
+}
+.icon{
+  width:74px; height:74px;
+  border-radius: 22px;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.18);
+  display:flex; align-items:center; justify-content:center;
+  font-size:34px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.25);
+}
+.cardBody{padding:14px}
+.cardBody h3{
+  margin:0 0 8px 0;
+  font-size:18px;
+  font-weight:900;  /* grueso */
+}
+.cardBody p{
+  margin:0;
+  color: var(--muted);
+  font-weight:700;  /* más legible */
+  font-size:14px;
+  line-height:1.45;
 }
 
-.card p{color:var(--muted);font-size:14px}
-
-/* ABOUT */
+/* About */
 .aboutGrid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:20px;
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap:14px;
 }
-.aboutQuote{
-background:linear-gradient(135deg,rgba(111,45,189,.12),rgba(255,42,166,.12));
-border-radius:25px;
-padding:22px;
+.aboutCard{
+  border-radius: var(--r);
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 14px 40px rgba(0,0,0,.28);
+  padding:16px;
 }
+.aboutCard h3{margin:0 0 10px 0; font-size:18px; font-weight:900}
+.aboutCard p{margin:0; color:var(--muted); font-weight:700; line-height:1.55}
+.quote{
+  border-radius: var(--r);
+  background: linear-gradient(135deg, rgba(111,45,189,.18), rgba(255,42,166,.10));
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 14px 40px rgba(0,0,0,.28);
+  padding:16px;
+}
+.quote b{display:block; font-weight:900; margin-bottom:8px}
+.quote p{margin:0; color:var(--muted); font-weight:800; line-height:1.55}
 
-/* CONTACT */
+/* Contact */
 .contact{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:20px;
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 14px;
+  margin-top: 14px;
 }
-
-.formCard,.infoCard{
-background:var(--card);
-border-radius:25px;
-padding:25px;
-box-shadow:0 15px 35px rgba(20,19,26,.08);
+.panel{
+  border-radius: var(--r);
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 14px 40px rgba(0,0,0,.28);
+  padding:16px;
 }
-
-input,textarea,select{
-width:100%;
-padding:14px;
-border-radius:15px;
-border:1px solid var(--line);
-margin-top:6px;
-margin-bottom:14px;
+label{display:block; font-weight:900; font-size:13px; color:var(--muted); margin-bottom:6px}
+input, textarea, select{
+  width:100%;
+  padding:14px 14px;
+  border-radius:16px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(0,0,0,.20);
+  color: var(--text);
+  font-weight:700;         /* más grueso */
+  font-size:16px;
+  outline:none;
 }
-
-.sendBtn{
-background:linear-gradient(135deg,var(--p1),var(--p2));
-color:white;
-padding:15px;
-border:none;
-border-radius:18px;
-font-weight:900;
-cursor:pointer;
-width:100%;
+textarea{min-height:120px; resize:vertical}
+input::placeholder, textarea::placeholder{color:rgba(247,247,255,.55)}
+select{appearance:none}
+.send{
+  width:100%;
+  margin-top:8px;
+  padding:14px 16px;
+  border-radius:16px;
+  border:0;
+  font-weight:900;
+  font-size:16px;
+  cursor:pointer;
+  background: linear-gradient(135deg,var(--p1),var(--p2));
+  color:#fff;
+  box-shadow: 0 18px 55px rgba(255,42,166,.22);
+  transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
 }
+.send:hover{transform: translateY(-2px); box-shadow: 0 22px 70px rgba(255,42,166,.28)}
+.send:active{transform: translateY(0); opacity:.92}
+.small{margin:10px 0 0; color:var(--muted); font-weight:700; font-size:13px; line-height:1.45}
+.kv{
+  display:grid; gap:10px;
+}
+.kvItem{
+  padding:12px 12px;
+  border-radius:16px;
+  background: rgba(0,0,0,.18);
+  border: 1px solid rgba(255,255,255,.10);
+}
+.kvItem b{display:block; font-weight:900}
+.kvItem span{display:block; color:var(--muted); font-weight:700; font-size:13px; margin-top:4px; line-height:1.25}
 
-.small{color:var(--muted);font-size:13px}
-
-/* FOOTER */
+/* Footer */
 .footer{
-margin-top:60px;
-padding:30px;
-background:#0f0f14;
-color:white;
-text-align:center;
-border-radius:20px;
-margin-bottom:100px;
+  margin: 26px 0 90px;
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.10);
+  text-align:center;
+  color: var(--muted);
+  font-weight:800;
 }
 
-/* BOTTOM BAR */
+/* Bottom bar (ultra fácil) */
 .bottomBar{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-background:white;
-border-top:1px solid var(--line);
-padding:10px;
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px;
+  position:fixed; left:0; right:0; bottom:0; z-index:50;
+  background: rgba(12,11,18,.75);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255,255,255,.12);
+  padding:10px 12px;
+}
+.bottomBar .bar{
+  max-width:1100px; margin:0 auto;
+  display:grid; grid-template-columns: repeat(3,1fr);
+  gap:10px;
+}
+.action{
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  padding:14px 10px;
+  border-radius:16px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  font-weight:900;
+}
+.action.primary{
+  background: linear-gradient(135deg,var(--p1),var(--p2));
+  border: 0;
+  box-shadow: 0 16px 40px rgba(255,42,166,.20);
 }
 
-.bottomBar a{
-padding:14px;
-border-radius:15px;
-font-weight:900;
-text-align:center;
-background:#f0efff;
-}
-
-.bottomBar .main{
-background:linear-gradient(135deg,var(--p1),var(--p2));
-color:white;
-}
-
-@media(max-width:900px){
-.contact,.aboutGrid{grid-template-columns:1fr}
-.hero h1{font-size:30px}
+/* Responsive */
+@media (max-width: 980px){
+  .heroInner{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr}
+  .aboutGrid{grid-template-columns:1fr}
+  .contact{grid-template-columns:1fr}
+  .pill{display:none}
+  .brand{min-width:auto}
+  .brand img{width:64px;height:64px}
+  .hTitle{font-size:34px}
 }
 </style>
 </head>
@@ -273,160 +425,281 @@ color:white;
 <script>
 const MAP_QUERY = "DENTALU Consultorio Dental, Porfirio Alcántara, 50450 Atlacomulco de Fabela, Méx.";
 const MAP_URL = "https://www.google.com/maps?q=" + encodeURIComponent(MAP_QUERY);
+
+const WA_NUMBER = "527121300626";
+const WA_BASE = `https://wa.me/${WA_NUMBER}`;
+const WA_TEXT_DEFAULT = "Hola DENTALU, quiero agendar una cita.";
 </script>
 
-<div class="header">
-<div class="logoBox">
-<img src="logo.png" alt="DENTALU">
-<div class="logoText">
-<b>DENTALU Consultorio Dental</b>
-<span>Atiende: <b>Lourdes Alejandra Hernández García</b></span>
-<span>Atlacomulco • Agenda fácil</span>
-</div>
+<!-- TOP NAV -->
+<div class="top">
+  <div class="topBar wrap">
+    <div class="brand">
+      <img src="logo.png" alt="DENTALU Consultorio Dental">
+      <div class="brandText">
+        <b>DENTALU Consultorio Dental</b>
+        <span>Atiende: <b style="color:#fff">Lourdes Alejandra Hernández García</b></span>
+        <span>Atlacomulco • Agenda fácil</span>
+      </div>
+    </div>
+
+    <div class="menu">
+      <a href="#quienes">Quiénes somos</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#ubicacion">Ubicación</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+
+    <div class="actions">
+      <a class="pill" href="tel:+527121300626">📞 712 130 0626</a>
+      <a id="waTop" href="#" target="_blank" rel="noopener">
+        <button class="btn">Agendar</button>
+      </a>
+    </div>
+  </div>
 </div>
 
-<div class="menu">
-<a href="#quienes">Quiénes somos</a>
-<a href="#servicios">Servicios</a>
-<a href="#ubicacion">Ubicación</a>
-<a href="#contacto">Contacto</a>
-</div>
+<main class="wrap">
 
-<a href="https://wa.me/527121300626?text=Hola%20DENTALU%2C%20quiero%20agendar%20una%20cita." target="_blank">
-<button class="btnHeader">Agendar</button>
-</a>
-</div>
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="heroInner">
+      <div>
+        <h1 class="hTitle">Agenda tu cita hoy</h1>
+        <p class="hSub">Un toque y listo: WhatsApp o llamada. Atención clara, amable y profesional.</p>
 
-<div class="wrap">
+        <div class="ctaRow">
+          <a id="waHero" href="#" target="_blank" rel="noopener">
+            <button class="ctaPrimary">Agendar por WhatsApp</button>
+          </a>
+          <a href="tel:+527121300626"><button class="ctaGhost">Llamar</button></a>
+          <a href="#contacto"><button class="ctaGhost">Enviar mensaje</button></a>
+        </div>
 
-<div class="hero">
-<h1>Agenda tu cita hoy</h1>
-<p>Un toque y listo: WhatsApp o llamada. Atención clara y profesional.</p>
-<div class="heroButtons">
-<a href="https://wa.me/527121300626?text=Hola%20DENTALU%2C%20quiero%20agendar%20una%20cita." target="_blank">
-<button class="whatsapp">Agendar por WhatsApp</button>
-</a>
-<a href="tel:+527121300626">
-<button class="call">Llamar</button>
-</a>
-</div>
-</div>
+        <div class="badges">
+          <span class="badge">✅ Atención personalizada</span>
+          <span class="badge">✅ Explicación simple</span>
+          <span class="badge">✅ Horario: 11:00 am – 7:00 pm</span>
+        </div>
+      </div>
 
-<div class="section" id="quienes">
-<h2>Quiénes somos</h2>
-<p class="sub">Atención cercana y profesional.</p>
+      <div class="heroCard">
+        <h3>Información rápida</h3>
 
-<div class="aboutGrid">
-<div class="card">
-<h3>DENTALU Consultorio Dental</h3>
-<p>
-En DENTALU brindamos atención personalizada con trato amable y claro.
-Nuestro objetivo es que cada paciente se sienta en confianza desde el primer momento.
-</p>
-<p style="margin-top:10px">
-Trabajamos con compromiso y dedicación para cuidar tu sonrisa.
-</p>
-</div>
+        <div class="infoLine">
+          <div style="font-size:18px">📍</div>
+          <div>
+            <b>Ubicación</b>
+            <span>DENTALU Consultorio Dental, Porfirio Alcántara, 50450 Atlacomulco de Fabela, Méx.</span>
+          </div>
+        </div>
 
-<div class="aboutQuote">
-<b>Lo que dicen nuestros pacientes</b>
-<p>
-“La atención fue excepcional, me sentí en buenas manos desde el primer momento”.
-</p>
-</div>
-</div>
-</div>
+        <div class="infoLine">
+          <div style="font-size:18px">🕒</div>
+          <div>
+            <b>Horario</b>
+            <span>Lunes a Viernes de 11:00 am a 7:00 pm</span>
+          </div>
+        </div>
 
-<div class="section" id="servicios">
-<h2>Servicios</h2>
-<div class="services">
-<div class="card">
-<div class="cardTop">🦷</div>
-<h3>Limpieza dental</h3>
-<p>Prevención y salud bucal.</p>
-</div>
+        <div class="infoLine">
+          <div style="font-size:18px">💬</div>
+          <div>
+            <b>Agenda fácil</b>
+            <span>Escribe y se manda directo a WhatsApp.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="card">
-<div class="cardTop">😁</div>
-<h3>Blanqueamiento</h3>
-<p>Aclara el tono de tus dientes.</p>
-</div>
+  <!-- QUIÉNES SOMOS -->
+  <section class="section" id="quienes">
+    <h2>Quiénes somos</h2>
+    <p class="sub">Atención cercana y profesional.</p>
 
-<div class="card">
-<div class="cardTop">🪥</div>
-<h3>Brackets</h3>
-<p>Alineación y seguimiento profesional.</p>
-</div>
-</div>
-</div>
+    <div class="aboutGrid">
+      <div class="aboutCard">
+        <h3>DENTALU Consultorio Dental</h3>
+        <p>
+          En DENTALU brindamos atención personalizada con trato amable y claro.
+          Nuestro objetivo es que cada paciente se sienta en confianza desde el primer momento.
+          Trabajamos con compromiso y dedicación para cuidar tu sonrisa.
+        </p>
+      </div>
 
-<div class="section" id="ubicacion">
-<h2>Ubicación</h2>
-<p class="sub">DENTALU Consultorio Dental, Porfirio Alcántara, 50450 Atlacomulco de Fabela, Méx.</p>
-<p class="sub"><b>Horario:</b> Lunes a Viernes de 11:00 am a 7:00 pm</p>
+      <div class="quote">
+        <b>Lo que dicen nuestros pacientes</b>
+        <p>“La atención fue excepcional, me sentí en buenas manos desde el primer momento”.</p>
+      </div>
+    </div>
+  </section>
 
-<a id="mapsBtn" target="_blank">
-<button class="btnHeader">Cómo llegar</button>
-</a>
-</div>
+  <!-- SERVICIOS -->
+  <section class="section" id="servicios">
+    <h2>Servicios</h2>
+    <p class="sub">Selecciona un servicio y agenda en segundos.</p>
 
-<div class="section" id="contacto">
-<h2>Contacto rápido</h2>
-<p class="sub">Llena esto y se manda directo a WhatsApp.</p>
+    <div class="grid">
+      <article class="card">
+        <div class="cardTop"><div class="icon">🦷</div></div>
+        <div class="cardBody">
+          <h3>Limpieza dental</h3>
+          <p>Prevención, encías sanas y una sonrisa más limpia.</p>
+        </div>
+      </article>
 
-<div class="contact">
-<div class="formCard">
-<label>Nombre</label>
-<input id="name" placeholder="Ej. María López">
+      <article class="card">
+        <div class="cardTop"><div class="icon">😁</div></div>
+        <div class="cardBody">
+          <h3>Blanqueamiento</h3>
+          <p>Aclara el tono de tus dientes con evaluación previa.</p>
+        </div>
+      </article>
 
-<label>Teléfono</label>
-<input id="phone" placeholder="Ej. 712 123 4567">
+      <article class="card">
+        <div class="cardTop"><div class="icon">🪥</div></div>
+        <div class="cardBody">
+          <h3>Brackets</h3>
+          <p>Alineación y seguimiento profesional para tu sonrisa.</p>
+        </div>
+      </article>
+    </div>
+  </section>
 
-<label>Mensaje</label>
-<textarea id="msg" placeholder="Quiero agendar una cita"></textarea>
+  <!-- UBICACIÓN -->
+  <section class="section" id="ubicacion">
+    <h2>Ubicación</h2>
+    <p class="sub">DENTALU Consultorio Dental, Porfirio Alcántara, 50450 Atlacomulco de Fabela, Méx.</p>
 
-<button class="sendBtn" onclick="sendToWhatsApp()">Enviar por WhatsApp</button>
-<div class="small">*Se abre WhatsApp automáticamente.</div>
-</div>
+    <div class="panel">
+      <div class="kv">
+        <div class="kvItem">
+          <b>Dirección</b>
+          <span>DENTALU Consultorio Dental, Porfirio Alcántara, 50450 Atlacomulco de Fabela, Méx.</span>
+        </div>
+        <div class="kvItem">
+          <b>Horario</b>
+          <span>Lunes a Viernes de 11:00 am a 7:00 pm</span>
+        </div>
+      </div>
 
-<div class="infoCard">
-<p class="small"><b>Teléfono:</b> +52 712 130 0626</p>
-<p class="small"><b>Ubicación:</b> DENTALU Consultorio Dental, Porfirio Alcántara, 50450 Atlacomulco de Fabela, Méx.</p>
-<p class="small"><b>Atiende:</b> Lourdes Alejandra Hernández García</p>
-<p class="small"><b>Horario:</b> Lunes a Viernes de 11:00 am a 7:00 pm</p>
-</div>
-</div>
-</div>
+      <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
+        <a id="mapsBtn" href="#" target="_blank" rel="noopener">
+          <button class="ctaPrimary" style="min-width:220px">Cómo llegar</button>
+        </a>
+        <a href="tel:+527121300626">
+          <button class="ctaGhost" style="min-width:220px">Llamar</button>
+        </a>
+      </div>
+    </div>
+  </section>
 
-<div class="footer">
-DENTALU Consultorio Dental © 2026
-</div>
+  <!-- CONTACTO -->
+  <section class="section" id="contacto">
+    <h2>Contacto rápido</h2>
+    <p class="sub">Llena esto y se manda directo a WhatsApp.</p>
 
-</div>
+    <div class="contact">
+      <div class="panel">
+        <label for="name">Nombre</label>
+        <input id="name" placeholder="Ej. María López" autocomplete="name" />
 
+        <label for="phone" style="margin-top:10px">Teléfono</label>
+        <input id="phone" placeholder="Ej. 712 123 4567" inputmode="tel" />
+
+        <label for="need" style="margin-top:10px">¿Qué necesitas?</label>
+        <select id="need">
+          <option>Limpieza</option>
+          <option>Blanqueamiento</option>
+          <option>Brackets</option>
+          <option>Dolor / Urgencia</option>
+          <option>Otro</option>
+        </select>
+
+        <label for="msg" style="margin-top:10px">Mensaje</label>
+        <textarea id="msg" placeholder="Ej. Quiero cita esta semana por la tarde"></textarea>
+
+        <button class="send" onclick="sendToWhatsApp()">Enviar por WhatsApp</button>
+        <p class="small">*Se abre WhatsApp automáticamente para enviar tu mensaje.</p>
+      </div>
+
+      <div class="panel">
+        <div class="kv">
+          <div class="kvItem">
+            <b>Teléfono</b>
+            <span>+52 712 130 0626</span>
+          </div>
+          <div class="kvItem">
+            <b>Atiende</b>
+            <span>Lourdes Alejandra Hernández García</span>
+          </div>
+          <div class="kvItem">
+            <b>Horario</b>
+            <span>Lunes a Viernes de 11:00 am a 7:00 pm</span>
+          </div>
+          <div class="kvItem">
+            <b>Ubicación</b>
+            <span>DENTALU Consultorio Dental, Porfirio Alcántara, 50450 Atlacomulco de Fabela, Méx.</span>
+          </div>
+        </div>
+
+        <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
+          <a id="waSide" href="#" target="_blank" rel="noopener" style="flex:1">
+            <button class="ctaPrimary" style="width:100%">Agendar ahora</button>
+          </a>
+          <a id="mapsSide" href="#" target="_blank" rel="noopener" style="flex:1">
+            <button class="ctaGhost" style="width:100%">Abrir en Maps</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    DENTALU Consultorio Dental © 2026
+  </div>
+</main>
+
+<!-- Bottom bar -->
 <div class="bottomBar">
-<a class="main" href="https://wa.me/527121300626?text=Hola%20DENTALU%2C%20quiero%20agendar%20una%20cita." target="_blank">WhatsApp</a>
-<a href="tel:+527121300626">Llamar</a>
-<a id="mapsBottom" target="_blank">Llegar</a>
+  <div class="bar">
+    <a id="waBottom" class="action primary" href="#" target="_blank" rel="noopener">💬 WhatsApp</a>
+    <a class="action" href="tel:+527121300626">📞 Llamar</a>
+    <a id="mapsBottom" class="action" href="#" target="_blank" rel="noopener">📍 Llegar</a>
+  </div>
 </div>
 
 <script>
-document.getElementById("mapsBtn").href = MAP_URL;
-document.getElementById("mapsBottom").href = MAP_URL;
+function setLinks(){
+  const waLink = `${WA_BASE}?text=${encodeURIComponent(WA_TEXT_DEFAULT)}`;
+  document.getElementById("waTop").href = waLink;
+  document.getElementById("waHero").href = waLink;
+  document.getElementById("waSide").href = waLink;
+  document.getElementById("waBottom").href = waLink;
+
+  document.getElementById("mapsBtn").href = MAP_URL;
+  document.getElementById("mapsSide").href = MAP_URL;
+  document.getElementById("mapsBottom").href = MAP_URL;
+}
 
 function sendToWhatsApp(){
-const name=document.getElementById('name').value.trim();
-const phone=document.getElementById('phone').value.trim();
-const msg=document.getElementById('msg').value.trim();
+  const name = document.getElementById('name').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const need = document.getElementById('need').value;
+  const msg  = document.getElementById('msg').value.trim();
 
-const text=
-`Hola DENTALU, quiero agendar una cita.%0A`+
-`Nombre: ${encodeURIComponent(name||'No indicado')}%0A`+
-`Tel: ${encodeURIComponent(phone||'No indicado')}%0A`+
-`Mensaje: ${encodeURIComponent(msg||'Sin mensaje')}`;
+  const text =
+    `Hola DENTALU, quiero agendar una cita.%0A` +
+    `Nombre: ${encodeURIComponent(name || 'No indicado')}%0A` +
+    `Tel: ${encodeURIComponent(phone || 'No indicado')}%0A` +
+    `Servicio: ${encodeURIComponent(need)}%0A` +
+    `Mensaje: ${encodeURIComponent(msg || 'Sin mensaje')}`;
 
-window.open(`https://wa.me/527121300626?text=${text}`,'_blank');
+  window.open(`${WA_BASE}?text=${text}`, '_blank');
 }
+
+setLinks();
 </script>
 
 </body>
